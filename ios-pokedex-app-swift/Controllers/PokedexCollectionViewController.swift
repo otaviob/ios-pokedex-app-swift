@@ -7,10 +7,11 @@
 
 import UIKit
 
+private let reuseIdentifier = "PokedexIdentifier"
+
 class PokedexCollectionViewController: UICollectionViewController {
     
-    
-    // MARK: - Inicialiers
+    // MARK: - View Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,13 +42,31 @@ class PokedexCollectionViewController: UICollectionViewController {
         
         navigationItem.title = "Pokedex"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(showSearchBar))
+        
+        collectionView.register(PokedexCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        
+    }
+}
 
-        
-        
+extension PokedexCollectionViewController {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 9
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PokedexCollectionViewCell
+        cell.backgroundColor = .mainColor()
+        return cell
     }
     
     
+}
 
-
+extension PokedexCollectionViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let width = (view.frame.width - 36) / 3
+        return CGSize(width: width, height: width)
+    }
 }
 

@@ -15,6 +15,7 @@
 		E0A227762DF121E00052C5D0 /* ios_pokedex_app_swiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A227752DF121E00052C5D0 /* ios_pokedex_app_swiftUITests.swift */; };
 		E0A227782DF121E00052C5D0 /* ios_pokedex_app_swiftUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A227772DF121E00052C5D0 /* ios_pokedex_app_swiftUITestsLaunchTests.swift */; };
 		E0A2278B2DF141800052C5D0 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A2278A2DF141800052C5D0 /* UIColor.swift */; };
+		E0A2278D2DF1A4350052C5D0 /* PokedexCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A2278C2DF1A4350052C5D0 /* PokedexCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		E0A227752DF121E00052C5D0 /* ios_pokedex_app_swiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_pokedex_app_swiftUITests.swift; sourceTree = "<group>"; };
 		E0A227772DF121E00052C5D0 /* ios_pokedex_app_swiftUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_pokedex_app_swiftUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E0A2278A2DF141800052C5D0 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		E0A2278C2DF1A4350052C5D0 /* PokedexCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 		E0A227872DF1317F0052C5D0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E0A2278C2DF1A4350052C5D0 /* PokedexCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				E0A227562DF121DF0052C5D0 /* PokedexCollectionViewController.swift in Sources */,
 				E0A2278B2DF141800052C5D0 /* UIColor.swift in Sources */,
 				E0A227522DF121DF0052C5D0 /* AppDelegate.swift in Sources */,
+				E0A2278D2DF1A4350052C5D0 /* PokedexCollectionViewCell.swift in Sources */,
 				E0A227542DF121DF0052C5D0 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
