@@ -14,6 +14,7 @@
 		E0A2276C2DF121E00052C5D0 /* ios_pokedex_app_swiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A2276B2DF121E00052C5D0 /* ios_pokedex_app_swiftTests.swift */; };
 		E0A227762DF121E00052C5D0 /* ios_pokedex_app_swiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A227752DF121E00052C5D0 /* ios_pokedex_app_swiftUITests.swift */; };
 		E0A227782DF121E00052C5D0 /* ios_pokedex_app_swiftUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A227772DF121E00052C5D0 /* ios_pokedex_app_swiftUITestsLaunchTests.swift */; };
+		E0A2278B2DF141800052C5D0 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A2278A2DF141800052C5D0 /* UIColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		E0A227712DF121E00052C5D0 /* ios-pokedex-app-swiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ios-pokedex-app-swiftUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0A227752DF121E00052C5D0 /* ios_pokedex_app_swiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_pokedex_app_swiftUITests.swift; sourceTree = "<group>"; };
 		E0A227772DF121E00052C5D0 /* ios_pokedex_app_swiftUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_pokedex_app_swiftUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E0A2278A2DF141800052C5D0 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,11 +97,13 @@
 		E0A227502DF121DF0052C5D0 /* ios-pokedex-app-swift */ = {
 			isa = PBXGroup;
 			children = (
+				E0A227892DF13BE60052C5D0 /* New Group */,
 				E0A227852DF12FE40052C5D0 /* Applications */,
 				E0A227882DF131B40052C5D0 /* Resources */,
 				E0A227862DF131490052C5D0 /* Models */,
 				E0A227872DF1317F0052C5D0 /* Views */,
 				E0A227842DF12B150052C5D0 /* Controllers */,
+				E0A2278A2DF141800052C5D0 /* UIColor.swift */,
 			);
 			path = "ios-pokedex-app-swift";
 			sourceTree = "<group>";
@@ -159,6 +163,13 @@
 				E0A2275D2DF121E00052C5D0 /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		E0A227892DF13BE60052C5D0 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,6 +302,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0A227562DF121DF0052C5D0 /* PokedexCollectionViewController.swift in Sources */,
+				E0A2278B2DF141800052C5D0 /* UIColor.swift in Sources */,
 				E0A227522DF121DF0052C5D0 /* AppDelegate.swift in Sources */,
 				E0A227542DF121DF0052C5D0 /* SceneDelegate.swift in Sources */,
 			);

@@ -8,12 +8,38 @@
 import UIKit
 
 class PokedexCollectionViewController: UICollectionViewController {
+    
+    
+    // MARK: - Inicialiers
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.backgroundColor = .systemRed
+        configureUIComponents()
         
     }
+    
+    
+    // MARK: - Configure UIComponents
+    
+    func configureUIComponents() {
+        // [Style] - Navigation bar
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .mainColor()
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        navigationController?.navigationBar.isTranslucent = false
+        
+        navigationItem.title = "Pokedex"
+
+        
+        
+    }
+    
+    
 
 
 }
