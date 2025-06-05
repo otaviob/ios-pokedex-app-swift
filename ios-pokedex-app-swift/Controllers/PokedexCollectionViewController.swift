@@ -18,6 +18,12 @@ class PokedexCollectionViewController: UICollectionViewController {
         
     }
     
+    // MARK: - Selectors
+    
+    @objc func showSearchBar() {
+        print("work")
+    }
+    
     
     // MARK: - Configure UIComponents
     
@@ -34,6 +40,7 @@ class PokedexCollectionViewController: UICollectionViewController {
         navigationController?.navigationBar.isTranslucent = false
         
         navigationItem.title = "Pokedex"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(showSearchBar))
 
         
         
