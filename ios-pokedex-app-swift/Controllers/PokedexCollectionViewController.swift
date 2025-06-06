@@ -48,6 +48,8 @@ class PokedexCollectionViewController: UICollectionViewController {
     }
 }
 
+    // MARK: - UICollectionView DataSource
+
 extension PokedexCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 9
@@ -58,11 +60,16 @@ extension PokedexCollectionViewController {
         cell.backgroundColor = .mainColor()
         return cell
     }
-    
-    
 }
 
+    // MARK: - UICollectionView Delegate
+
 extension PokedexCollectionViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 32, left: 8, bottom: 8, right: 8)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let width = (view.frame.width - 36) / 3

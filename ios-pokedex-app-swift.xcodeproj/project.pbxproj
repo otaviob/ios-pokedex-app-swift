@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E057D3232DF30C99004FF46B /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E057D3222DF30C99004FF46B /* UIView.swift */; };
 		E0A227522DF121DF0052C5D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A227512DF121DF0052C5D0 /* AppDelegate.swift */; };
 		E0A227542DF121DF0052C5D0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A227532DF121DF0052C5D0 /* SceneDelegate.swift */; };
 		E0A227562DF121DF0052C5D0 /* PokedexCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A227552DF121DF0052C5D0 /* PokedexCollectionViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E057D3222DF30C99004FF46B /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		E0A2274E2DF121DF0052C5D0 /* ios-pokedex-app-swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-pokedex-app-swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0A227512DF121DF0052C5D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0A227532DF121DF0052C5D0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				E0A227872DF1317F0052C5D0 /* Views */,
 				E0A227842DF12B150052C5D0 /* Controllers */,
 				E0A2278A2DF141800052C5D0 /* UIColor.swift */,
+				E057D3222DF30C99004FF46B /* UIView.swift */,
 			);
 			path = "ios-pokedex-app-swift";
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				E0A2278B2DF141800052C5D0 /* UIColor.swift in Sources */,
 				E0A227522DF121DF0052C5D0 /* AppDelegate.swift in Sources */,
 				E0A2278D2DF1A4350052C5D0 /* PokedexCollectionViewCell.swift in Sources */,
+				E057D3232DF30C99004FF46B /* UIView.swift in Sources */,
 				E0A227542DF121DF0052C5D0 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
