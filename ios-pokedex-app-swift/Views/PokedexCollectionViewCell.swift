@@ -22,7 +22,7 @@ class PokedexCollectionViewCell: UICollectionViewCell {
         let view = UIView()
         view.backgroundColor = .mainColor()
         view.addSubview(nameLabel)
-        view.center(inView: view)
+        nameLabel.center(inView: view)
         
         return view
     }()

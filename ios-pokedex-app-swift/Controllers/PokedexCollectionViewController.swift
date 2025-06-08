@@ -16,6 +16,7 @@ class PokedexCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUIComponents()
+        downloadPokemonCollections()
         
     }
     
@@ -23,6 +24,13 @@ class PokedexCollectionViewController: UICollectionViewController {
     
     @objc func showSearchBar() {
         print("work")
+    }
+    
+    // MARK: - Networking
+    
+    func downloadPokemonCollections() {
+        Service.shared.downloadPokemonCollections()
+        
     }
     
     
