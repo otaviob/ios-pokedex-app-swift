@@ -29,11 +29,17 @@ class Service {
             do {
                 guard let resultArray = try JSONSerialization.jsonObject(with: data, options: []) as? [AnyObject] else { return }
                 
-                    print(resultArray)
-                
-            } catch let error {
-                print("failed to create json with error: ", error.localizedDescription)
-            }   
-        }.resume()
+                for (key, result) in resultArray.enumerated() {
+                    if let dictionary = result as? [String: AnyObject] {
+                        let pokemon = PokemonCollectionModel(id: key, dictionary: dictionary)
+                        print(pokemon.name  )
+                        }
+                    }
+                    
+                } catch let error {
+                    print("failed to create json with error: ", error.localizedDescription)
+                }
+            }.resume()
+        }
     }
-}
+
