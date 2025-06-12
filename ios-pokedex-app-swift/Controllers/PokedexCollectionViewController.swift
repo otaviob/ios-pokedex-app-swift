@@ -11,13 +11,16 @@ private let reuseIdentifier = "PokedexIdentifier"
 
 class PokedexCollectionViewController: UICollectionViewController {
     
+    // MARK: - Properties
+    
+    var pokemonCollection = [PokemonCollectionModel]()
+    
     // MARK: - View Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUIComponents()
         downloadPokemonCollections()
-        
     }
     
     // MARK: - Selectors
@@ -29,8 +32,12 @@ class PokedexCollectionViewController: UICollectionViewController {
     // MARK: - Networking
     
     func downloadPokemonCollections() {
-        Service.shared.downloadPokemonCollections()
-        
+        Service.shared.downloadPokemonCollections { (pokemonCollection) in
+            DispatchQueue.main.sync {
+                self.pokemonCollection = pokemonCollection
+                self.collectionView.reloadData()
+            }
+        }
     }
     
     
@@ -60,12 +67,12 @@ class PokedexCollectionViewController: UICollectionViewController {
 
 extension PokedexCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 9
+        return pokemonCollection.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PokedexCollectionViewCell
-        cell.backgroundColor = .mainColor()
+        cell.pokemonCollection = pokemonCollection[indexPath.item]
         return cell
     }
 }
