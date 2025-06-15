@@ -14,12 +14,13 @@ class PokedexCollectionViewCell: UICollectionViewCell {
     var pokemonCollection: PokemonCollectionModel? {
         didSet {
             nameLabel.text = pokemonCollection?.name
+            imageView.image = pokemonCollection?.image
         }
     }
     
     let imageView: UIImageView = {
         let iv = UIImageView()
-        iv.backgroundColor = .systemGray
+        iv.backgroundColor = .secondarySystemBackground
         iv.contentMode = .scaleAspectFit
         return iv
     }()
@@ -29,7 +30,6 @@ class PokedexCollectionViewCell: UICollectionViewCell {
         view.backgroundColor = .mainColor()
         view.addSubview(nameLabel)
         nameLabel.center(inView: view)
-        
         return view
     }()
     
@@ -42,19 +42,17 @@ class PokedexCollectionViewCell: UICollectionViewCell {
     }()
     
     
-    // MARK: - Inicializer
+    // MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureUIComponents()
-        
-        
+    
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
     // MARK: - Helper Functions
     

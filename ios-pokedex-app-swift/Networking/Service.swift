@@ -5,14 +5,16 @@
 //  Created by Otavio Brito on 8/6/2025.
 //
 
-import Foundation
+import UIKit
 
 class Service {
     
     static let shared = Service()
     let BASE_URL = "https://pokedex-bb36f.firebaseio.com/pokemon.json"
     
-    func downloadPokemonCollections(completion: @escaping ([PokemonCollectionModel]) -> ()) {
+    /// download
+    
+    func fetchPokemonCollections(completion: @escaping ([PokemonCollectionModel]) -> ()) {
         
         var pokemoncollectionArray = [PokemonCollectionModel]()
         
@@ -34,15 +36,44 @@ class Service {
                 for (key, result) in resultArray.enumerated() {
                     if let dictionary = result as? [String: AnyObject] {
                         let pokemon = PokemonCollectionModel(id: key, dictionary: dictionary)
-                        pokemoncollectionArray.append(pokemon)
-                        }
-                    completion(pokemoncollectionArray)
+                        guard let imageUrl = pokemon.imageUrl else { return }
+                        
+                        self.fetchImage(withUrlString: imageUrl, completion: { (image) in
+                            pokemon.image = image
+                            pokemoncollectionArray.append(pokemon)
+                            pokemoncollectionArray.sort { (pokeCollection1, pokeCollection2) -> Bool in
+                                return pokeCollection1.id! < pokeCollection2.id!
+                            }
+                            completion(pokemoncollectionArray)
+                        })
                     }
-                    
-                } catch let error {
-                    print("failed to create json with error: ", error.localizedDescription)
                 }
-            }.resume()
-        }
+                
+            } catch let error {
+                print("failed to create json with error: ", error.localizedDescription)
+            }
+        }.resume()
     }
+    
+    /// donwload image 
+    
+    private func fetchImage(withUrlString urlString: String, completion: @escaping(UIImage) -> ()) {
+        guard let url = URL(string: urlString) else { return }
+        
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            
+            if let error = error {
+                print("Failed to fetch image with error: ", error.localizedDescription)
+                return
+            }
+            
+            guard let data = data else { return }
+            guard let image = UIImage(data: data) else { return }
+            completion(image)
+            
+        }.resume()
+    }
+}
+
+
 

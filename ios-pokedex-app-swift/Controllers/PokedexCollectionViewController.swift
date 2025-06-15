@@ -20,7 +20,7 @@ class PokedexCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUIComponents()
-        downloadPokemonCollections()
+        networkingPokemonCollections()
     }
     
     // MARK: - Selectors
@@ -31,15 +31,14 @@ class PokedexCollectionViewController: UICollectionViewController {
     
     // MARK: - Networking
     
-    func downloadPokemonCollections() {
-        Service.shared.downloadPokemonCollections { (pokemonCollection) in
+    func networkingPokemonCollections() {
+        Service.shared.fetchPokemonCollections { (pokemonCollection) in
             DispatchQueue.main.sync {
                 self.pokemonCollection = pokemonCollection
                 self.collectionView.reloadData()
             }
         }
     }
-    
     
     // MARK: - Configure UIComponents
     
