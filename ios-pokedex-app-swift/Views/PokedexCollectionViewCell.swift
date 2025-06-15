@@ -47,25 +47,36 @@ class PokedexCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureUIComponents()
-    
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Helper Functions
+    // MARK: - Selectors
     
-    func configureUIComponents() {
-        self.layer.cornerRadius = 10
-        self.clipsToBounds = true
-        
-        addSubview(imageView)
-        imageView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: self.frame.height - 32)
-        
-        addSubview(nameContainerView)
-        nameContainerView.anchor(top: nil, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 32)
+    @objc func handlongPress(sender: UILongPressGestureRecognizer) {
+        if sender.state == .began {
+            print("long press did begin")
+        } else if sender.state == .ended {
+            print("long press did end..")
+        }
     }
-    
-    
-}
+        
+        // MARK: - Helper Functions
+        
+        func configureUIComponents() {
+            self.layer.cornerRadius = 10
+            self.clipsToBounds = true
+            
+            addSubview(imageView)
+            imageView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: self.frame.height - 32)
+            
+            addSubview(nameContainerView)
+            nameContainerView.anchor(top: nil, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 32)
+            
+            let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handlongPress))
+            self.addGestureRecognizer(longPressGestureRecognizer)
+        }
+    }
+
