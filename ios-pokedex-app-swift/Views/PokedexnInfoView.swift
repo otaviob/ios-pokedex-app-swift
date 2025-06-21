@@ -1,0 +1,117 @@
+//
+//  PokemonInfoView.swift
+//  ios-pokedex-app-swift
+//
+//  Created by Otavio Brito on 16/6/2025.
+//
+
+import UIKit
+
+class PokedexnInfoView: UIView {
+    
+    // MARK: - Properties
+    
+    let imageView: UIImageView = {
+        let iv = UIImageView()
+        iv.contentMode = .scaleAspectFill
+        return iv
+    }()
+    
+    lazy var nameContainerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .mainColor()
+        view.addSubview(nameLabel)
+        view.layer.cornerRadius = 5
+        nameLabel.center(inView: view)
+        return view
+    }()
+    
+    let nameLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .white
+        label.font = UIFont.systemFont(ofSize: 16)
+        return label
+    }()
+    
+    let typeLabel: UILabel = {
+        let label = UILabel()
+        label.text = "TEST001"
+        return label
+    }()
+    
+    let defenseLabel: UILabel = {
+        let label = UILabel()
+        label.text = "TEST001"
+        return label
+    }()
+    
+    let heightLabel: UILabel = {
+        let label = UILabel()
+        label.text = "TEST001"
+        return label
+    }()
+    
+    let pokedexIdLabel: UILabel = {
+        let label = UILabel()
+        label.text = "TEST001"
+        return label
+    }()
+    
+    let attackLabel: UILabel = {
+        let label = UILabel()
+        label.text = "TEST001"
+        return label
+    }()
+    
+    let weightLabel: UILabel = {
+        let label = UILabel()
+        label.text = "TEST001"
+        return label
+    }()
+    
+    let infoButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.backgroundColor = .mainColor()
+        button.setTitle("View More Info", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        button.addTarget(PokedexnInfoView.self, action: #selector(handleViewMoreInfo), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.layer.cornerRadius = 5
+        return button
+    }()
+    
+    // MARK: - Init
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        configureUIComponents()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Selectors
+    
+    @objc func handleViewMoreInfo() {
+        print("handle view more info..")
+        
+    }
+    
+    // MARK: - Helper Functions
+    
+    func configureUIComponents() {
+        
+        backgroundColor = .white
+        self.layer.masksToBounds = true
+        
+        addSubview(nameContainerView)
+        nameContainerView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 50)
+        
+        addSubview(imageView)
+        imageView.anchor(top: nameContainerView.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 24, paddingLeft: 12, paddingBottom: 0, paddingRight: 0, width: 100, height: 60)
+        imageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        
+    }
+}

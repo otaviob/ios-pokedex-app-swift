@@ -15,6 +15,12 @@ class PokedexCollectionViewController: UICollectionViewController {
     
     var pokemonCollection = [PokemonCollectionModel]()
     
+    let infoView: PokedexnInfoView = {
+        let view = PokedexnInfoView()
+        view.layer.cornerRadius = 5
+        return view
+    }()
+    
     // MARK: - View Lifecycle
 
     override func viewDidLoad() {
@@ -27,7 +33,7 @@ class PokedexCollectionViewController: UICollectionViewController {
     
     @objc func showSearchBar() {
         print("work")
-    }
+    }   
     
     // MARK: - Networking
     
@@ -58,6 +64,11 @@ class PokedexCollectionViewController: UICollectionViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(showSearchBar))
         
         collectionView.register(PokedexCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        
+        view.addSubview(infoView)
+        infoView.anchor(top: nil, left: nil, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.frame.width - 64, height: 500)
+        infoView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        infoView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -44).isActive = true
         
     }
 }

@@ -58,8 +58,7 @@ class PokedexCollectionViewCell: UICollectionViewCell {
     @objc func handlongPress(sender: UILongPressGestureRecognizer) {
         if sender.state == .began {
             print("long press did begin")
-        } else if sender.state == .ended {
-            print("long press did end..")
+        
         }
     }
         
