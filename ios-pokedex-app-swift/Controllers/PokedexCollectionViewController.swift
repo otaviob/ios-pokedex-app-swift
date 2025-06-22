@@ -13,10 +13,10 @@ class PokedexCollectionViewController: UICollectionViewController {
     
     // MARK: - Properties
     
-    var pokemonCollection = [PokemonCollectionModel]()
+    var pokedexCollection = [PokemonCollectionModel]()
     
-    let infoView: PokedexnInfoView = {
-        let view = PokedexnInfoView()
+    let infoView: PokedexInfoView = {
+        let view = PokedexInfoView()
         view.layer.cornerRadius = 5
         return view
     }()
@@ -38,9 +38,9 @@ class PokedexCollectionViewController: UICollectionViewController {
     // MARK: - Networking
     
     func networkingPokemonCollections() {
-        Service.shared.fetchPokemonCollections { (pokemonCollection) in
+        Service.shared.fetchPokemonCollections { (pokedexCollection) in
             DispatchQueue.main.sync {
-                self.pokemonCollection = pokemonCollection
+                self.pokedexCollection = pokedexCollection
                 self.collectionView.reloadData()
             }
         }
@@ -65,10 +65,7 @@ class PokedexCollectionViewController: UICollectionViewController {
         
         collectionView.register(PokedexCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
-        view.addSubview(infoView)
-        infoView.anchor(top: nil, left: nil, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.frame.width - 64, height: 500)
-        infoView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        infoView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -44).isActive = true
+        
         
     }
 }
@@ -77,12 +74,13 @@ class PokedexCollectionViewController: UICollectionViewController {
 
 extension PokedexCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return pokemonCollection.count
+        return pokedexCollection.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PokedexCollectionViewCell
-        cell.pokemonCollection = pokemonCollection[indexPath.item]
+        cell.pokedexCollection = pokedexCollection[indexPath.item]
+        cell.delegate = self
         return cell
     }
 }
@@ -100,5 +98,17 @@ extension PokedexCollectionViewController: UICollectionViewDelegateFlowLayout {
         let width = (view.frame.width - 36) / 3
         return CGSize(width: width, height: width)
     }
+}
+
+extension PokedexCollectionViewController: PokedexCollectionViewCellDelegate {
+    func presentPokedexInfoView(withPokedex pokedex: PokemonCollectionModel) {
+        
+        view.addSubview(infoView)
+        infoView.anchor(top: nil, left: nil, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.frame.width - 64, height: 350)
+        infoView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        infoView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -44).isActive = true
+    }
+    
+    
 }
 

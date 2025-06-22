@@ -7,14 +7,20 @@
 
 import UIKit
 
+protocol PokedexCollectionViewCellDelegate {
+    func presentPokedexInfoView(withPokedex pokedex: PokemonCollectionModel)
+}
+
 class PokedexCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
     
-    var pokemonCollection: PokemonCollectionModel? {
+    var delegate: PokedexCollectionViewCellDelegate?
+    
+    var pokedexCollection: PokemonCollectionModel? {
         didSet {
-            nameLabel.text = pokemonCollection?.name
-            imageView.image = pokemonCollection?.image
+            nameLabel.text = pokedexCollection?.name
+            imageView.image = pokedexCollection?.image
         }
     }
     
@@ -57,7 +63,8 @@ class PokedexCollectionViewCell: UICollectionViewCell {
     
     @objc func handlongPress(sender: UILongPressGestureRecognizer) {
         if sender.state == .began {
-            print("long press did begin")
+            guard let pokedex = self.pokedexCollection else  { return }
+            delegate?.presentPokedexInfoView(withPokedex: pokedex)
         
         }
     }
