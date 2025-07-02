@@ -7,9 +7,21 @@
 
 import UIKit
 
+protocol InfoViewDelegate  {
+    func dismisssInfoView(withPokemon pokemon: PokemonCollectionModel?)
+}
+
 class PokedexInfoView: UIView {
     
     // MARK: - Properties
+    
+    var delegate: InfoViewDelegate?
+    
+    var pokedexCollection: PokemonCollectionModel? {
+        didSet {
+            print("work well")
+        }
+    }
     
     let imageView: UIImageView = {
         let iv = UIImageView()
@@ -97,8 +109,8 @@ class PokedexInfoView: UIView {
     // MARK: - Selectors
     
     @objc func handleViewMoreInfo() {
-        print("handle view more info..")
-        
+        guard let pokedex = self.pokedexCollection else { return }
+        delegate?.dismisssInfoView(withPokemon: pokedex)
     }
     
     // MARK: - Helper Functions
@@ -144,3 +156,5 @@ class PokedexInfoView: UIView {
         
     }
 }
+
+

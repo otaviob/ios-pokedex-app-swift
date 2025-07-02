@@ -109,9 +109,12 @@ extension PokedexCollectionViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension PokedexCollectionViewController: PokedexCollectionViewCellDelegate {
+    
     func presentPokedexInfoView(withPokedex pokedex: PokemonCollectionModel) {
         
         view.addSubview(infoView)
+        infoView.delegate = self
+        infoView.pokedexCollection = pokedex
         infoView.anchor(top: nil, left: nil, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.frame.width - 64, height: 350)
         infoView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         infoView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -44).isActive = true
@@ -129,3 +132,19 @@ extension PokedexCollectionViewController: PokedexCollectionViewCellDelegate {
     
 }
 
+extension PokedexCollectionViewController: InfoViewDelegate {
+    func dismisssInfoView(withPokemon pokemon: PokemonCollectionModel?) {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.visualEffectView.alpha = 0
+            self.infoView.alpha = 0
+            self.infoView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        }) { (_) in
+            self.infoView.removeFromSuperview()
+            
+        }
+        
+    }
+}
+
+
+// 18:15

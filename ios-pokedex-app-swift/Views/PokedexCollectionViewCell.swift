@@ -63,7 +63,7 @@ class PokedexCollectionViewCell: UICollectionViewCell {
     
     @objc func handlongPress(sender: UILongPressGestureRecognizer) {
         if sender.state == .began {
-            guard let pokedex = self.pokedexCollection else  { return }
+            guard let pokedex = self.pokedexCollection else { return }
             delegate?.presentPokedexInfoView(withPokedex: pokedex)
         
         }
