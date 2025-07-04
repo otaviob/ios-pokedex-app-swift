@@ -16,17 +16,32 @@ class PokedexInfoView: UIView {
     // MARK: - Properties
     
     var delegate: InfoViewDelegate?
-    
-    var pokedexCollection: PokemonCollectionModel? {
+        
+        var pokedex: PokemonCollectionModel? {
         didSet {
-            print("work well")
+            guard let pokedex = self.pokedex else { return }
+            guard let type = pokedex.type else { return }
+            guard let defense = pokedex.defense else { return }
+            guard let attack = pokedex.attack else { return }
+            guard let id = pokedex.id else { return }
+            guard let height = pokedex.height else { return }
+            guard let weight = pokedex.weight else { return }
+            
+            imageView.image = pokedex.image
+            nameLabel.text = pokedex.name
+            
+            configureLabel(label: typeLabel, title: "Type", details: type)
+            configureLabel(label: defenseLabel, title: "Defense", details: "\(defense)")
+            configureLabel(label: heightLabel, title: "Height", details: "\(height)")
+            configureLabel(label: weightLabel, title: "Weight", details: "\(weight)")
+            configureLabel(label: pokedexIdLabel, title: "Pokedex Id", details: "\(id)")
+            configureLabel(label: attackLabel, title: "Base Attack", details: "\(attack)")
         }
     }
     
     let imageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
-        iv.backgroundColor = .lightGray
         return iv
     }()
     
@@ -109,11 +124,17 @@ class PokedexInfoView: UIView {
     // MARK: - Selectors
     
     @objc func handleViewMoreInfo() {
-        guard let pokedex = self.pokedexCollection else { return }
+        guard let pokedex = self.pokedex else { return }
         delegate?.dismisssInfoView(withPokemon: pokedex)
     }
     
     // MARK: - Helper Functions
+    
+    func configureLabel(label: UILabel, title: String, details: String) {
+        let attributedText = NSMutableAttributedString(attributedString: NSAttributedString(string: "\(title):  ", attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 16), NSAttributedString.Key.foregroundColor: UIColor.mainColor()]))
+        attributedText.append(NSAttributedString(string: "\(details)", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16), NSAttributedString.Key.foregroundColor: UIColor.gray]))
+        label.attributedText = attributedText
+    }
     
     func configureUIComponents() {
         
