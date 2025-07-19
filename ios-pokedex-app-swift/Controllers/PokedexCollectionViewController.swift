@@ -14,6 +14,7 @@ class PokedexCollectionViewController: UICollectionViewController {
     // MARK: - Properties
     
     var pokedexCollection = [PokedexCollectionModel]()
+    var searchBar: UISearchBar!
     
     let infoView: PokedexInfoView = {
         let view = PokedexInfoView()
@@ -55,6 +56,17 @@ class PokedexCollectionViewController: UICollectionViewController {
                 self.collectionView.reloadData()
             }
         }
+    }
+    
+    func configureSerchBar() {
+          searchBar = UISearchBar()
+        searchBar.sizeToFit()
+        searchBar.showsCancelButton = true
+        searchBar.becomeFirstResponder()
+        searchBar.tintColor = .white
+        
+        navigationItem.rightBarButtonItem = nil
+        navigationItem.titleView = searchBar
     }
     
     // MARK: - Helper Functions
