@@ -14,9 +14,9 @@ class Service {
     
     /// download
     
-    func fetchPokemonCollections(completion: @escaping ([PokemonCollectionModel]) -> ()) {
+    func fetchPokemonCollections(completion: @escaping ([PokedexCollectionModel]) -> ()) {
         
-        var pokemoncollectionArray = [PokemonCollectionModel]()
+        var pokemoncollectionArray = [PokedexCollectionModel]()
         
         guard let url = URL(string: BASE_URL) else { return }
         
@@ -35,7 +35,7 @@ class Service {
                 
                 for (key, result) in resultArray.enumerated() {
                     if let dictionary = result as? [String: AnyObject] {
-                        let pokemon = PokemonCollectionModel(id: key, dictionary: dictionary)
+                        let pokemon = PokedexCollectionModel(id: key, dictionary: dictionary)
                         guard let imageUrl = pokemon.imageUrl else { return }
                         
                         self.fetchImage(withUrlString: imageUrl, completion: { (image) in

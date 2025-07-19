@@ -8,7 +8,7 @@
 import UIKit
 
 protocol InfoViewDelegate  {
-    func dismisssInfoView(withPokemon pokemon: PokemonCollectionModel?)
+    func dismissInfoView(withPokedex pokedex: PokedexCollectionModel?)
 }
 
 class PokedexInfoView: UIView {
@@ -17,7 +17,7 @@ class PokedexInfoView: UIView {
     
     var delegate: InfoViewDelegate?
         
-        var pokedex: PokemonCollectionModel? {
+        var pokedex: PokedexCollectionModel? {
         didSet {
             guard let pokedex = self.pokedex else { return }
             guard let type = pokedex.type else { return }
@@ -124,8 +124,9 @@ class PokedexInfoView: UIView {
     // MARK: - Selectors
     
     @objc func handleViewMoreInfo() {
+        print("jjjj")
         guard let pokedex = self.pokedex else { return }
-        delegate?.dismisssInfoView(withPokemon: pokedex)
+        delegate?.dismissInfoView(withPokedex: pokedex)
     }
     
     // MARK: - Helper Functions
@@ -158,7 +159,7 @@ class PokedexInfoView: UIView {
         let separatorView = UIView()
         separatorView.backgroundColor = .secondarySystemBackground
         addSubview(separatorView)
-        separatorView.anchor(top: typeLabel.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 8, paddingLeft: 4, paddingBottom: 0, paddingRight: 4, width: 0, height: 1)
+        separatorView.anchor(top:    typeLabel.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 8, paddingLeft: 4, paddingBottom: 0, paddingRight: 4, width: 0, height: 1)
         
         addSubview(heightLabel)
         heightLabel.anchor(top: separatorView.bottomAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 16, paddingLeft: 8, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)

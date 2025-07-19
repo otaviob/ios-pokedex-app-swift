@@ -13,7 +13,7 @@ class PokedexCollectionViewController: UICollectionViewController {
     
     // MARK: - Properties
     
-    var pokedexCollection = [PokemonCollectionModel]()
+    var pokedexCollection = [PokedexCollectionModel]()
     
     let infoView: PokedexInfoView = {
         let view = PokedexInfoView()
@@ -41,6 +41,11 @@ class PokedexCollectionViewController: UICollectionViewController {
         print("work")
     }   
     
+    @objc func handleDismissal() {
+        print("work")
+        dismissInfoView(withPokedex: nil)
+    }
+    
     // MARK: - Networking
     
     func networkingPokemonCollections() {
@@ -52,7 +57,17 @@ class PokedexCollectionViewController: UICollectionViewController {
         }
     }
     
-    // MARK: - Configure UIComponents
+    // MARK: - Helper Functions
+    
+    func dismissInfoView(pokedex: PokedexCollectionModel?) {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.visualEffectView.alpha = 0
+            self.infoView.alpha = 0
+            self.infoView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        }) { (_) in
+            self.infoView.removeFromSuperview()
+        }
+    }
     
     func configureUIComponents() {
         // [Style] - Navigation bar
@@ -74,6 +89,9 @@ class PokedexCollectionViewController: UICollectionViewController {
         view.addSubview(visualEffectView)
         visualEffectView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         visualEffectView.alpha = 0
+        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(handleDismissal))
+        visualEffectView.addGestureRecognizer(gesture)
         
     }
 }
@@ -108,9 +126,11 @@ extension PokedexCollectionViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+// MARK: - Delegate
+
 extension PokedexCollectionViewController: PokedexCollectionViewCellDelegate {
     
-    func presentPokedexInfoView(withPokedex pokedex: PokemonCollectionModel) {
+    func presentPokedexInfoView(withPokedex pokedex: PokedexCollectionModel) {
         
         view.addSubview(infoView)
         infoView.delegate = self
@@ -128,21 +148,11 @@ extension PokedexCollectionViewController: PokedexCollectionViewCellDelegate {
             self.infoView.transform = .identity
         }
     }
-    
-    
 }
 
 extension PokedexCollectionViewController: InfoViewDelegate {
-    func dismisssInfoView(withPokemon pokemon: PokemonCollectionModel?) {
-        UIView.animate(withDuration: 0.5, animations: {
-            self.visualEffectView.alpha = 0
-            self.infoView.alpha = 0
-            self.infoView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
-        }) { (_) in
-            self.infoView.removeFromSuperview()
-            
-        }
-        
+    func dismissInfoView(withPokedex pokedex: PokedexCollectionModel?) {
+        dismissInfoView(pokedex: pokedex)
     }
 }
 

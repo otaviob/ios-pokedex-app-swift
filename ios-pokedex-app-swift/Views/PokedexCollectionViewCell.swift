@@ -8,7 +8,7 @@
 import UIKit
 
 protocol PokedexCollectionViewCellDelegate {
-    func presentPokedexInfoView(withPokedex pokedex: PokemonCollectionModel)
+    func presentPokedexInfoView(withPokedex pokedex: PokedexCollectionModel)
 }
 
 class PokedexCollectionViewCell: UICollectionViewCell {
@@ -17,7 +17,7 @@ class PokedexCollectionViewCell: UICollectionViewCell {
     
     var delegate: PokedexCollectionViewCellDelegate?
     
-    var pokedexCollection: PokemonCollectionModel? {
+    var pokedexCollection: PokedexCollectionModel? {
         didSet {
             nameLabel.text = pokedexCollection?.name
             imageView.image = pokedexCollection?.image
@@ -65,7 +65,6 @@ class PokedexCollectionViewCell: UICollectionViewCell {
         if sender.state == .began {
             guard let pokedex = self.pokedexCollection else { return }
             delegate?.presentPokedexInfoView(withPokedex: pokedex)
-        
         }
     }
         

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E057D3232DF30C99004FF46B /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E057D3222DF30C99004FF46B /* UIView.swift */; };
-		E057D3252DF4465C004FF46B /* PokemonCollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E057D3242DF4465C004FF46B /* PokemonCollectionModel.swift */; };
+		E057D3252DF4465C004FF46B /* PokedexCollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E057D3242DF4465C004FF46B /* PokedexCollectionModel.swift */; };
 		E057D3272DF501E4004FF46B /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = E057D3262DF501E4004FF46B /* Service.swift */; };
 		E064BF3B2E004A750091602D /* PokedexInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E064BF3A2E004A750091602D /* PokedexInfoView.swift */; };
 		E0A227522DF121DF0052C5D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A227512DF121DF0052C5D0 /* AppDelegate.swift */; };
@@ -41,7 +41,7 @@
 
 /* Begin PBXFileReference section */
 		E057D3222DF30C99004FF46B /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
-		E057D3242DF4465C004FF46B /* PokemonCollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCollectionModel.swift; sourceTree = "<group>"; };
+		E057D3242DF4465C004FF46B /* PokedexCollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexCollectionModel.swift; sourceTree = "<group>"; };
 		E057D3262DF501E4004FF46B /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		E064BF3A2E004A750091602D /* PokedexInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexInfoView.swift; sourceTree = "<group>"; };
 		E0A2274E2DF121DF0052C5D0 /* ios-pokedex-app-swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-pokedex-app-swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,7 +157,7 @@
 		E0A227862DF131490052C5D0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				E057D3242DF4465C004FF46B /* PokemonCollectionModel.swift */,
+				E057D3242DF4465C004FF46B /* PokedexCollectionModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -321,7 +321,7 @@
 				E0A2278B2DF141800052C5D0 /* UIColor.swift in Sources */,
 				E064BF3B2E004A750091602D /* PokedexInfoView.swift in Sources */,
 				E0A227522DF121DF0052C5D0 /* AppDelegate.swift in Sources */,
-				E057D3252DF4465C004FF46B /* PokemonCollectionModel.swift in Sources */,
+				E057D3252DF4465C004FF46B /* PokedexCollectionModel.swift in Sources */,
 				E0A2278D2DF1A4350052C5D0 /* PokedexCollectionViewCell.swift in Sources */,
 				E057D3232DF30C99004FF46B /* UIView.swift in Sources */,
 				E0A227542DF121DF0052C5D0 /* SceneDelegate.swift in Sources */,

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PokemonCollectionModel {
+class PokedexCollectionModel {
         
     var name: String?
     var imageUrl: String?
