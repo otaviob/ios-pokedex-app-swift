@@ -26,7 +26,7 @@ class PokedexCollectionModel {
         self.id = id
         
         if let name = dictionary["name"] as? String {
-            self.name = name.capitalized
+            self.name = name
         }
         
         if let imageUrl = dictionary["imageUrl"] as? String {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E05720F32E5B30B2005013DB /* PokemonInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05720F22E5B30B2005013DB /* PokemonInfoController.swift */; };
 		E057D3232DF30C99004FF46B /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E057D3222DF30C99004FF46B /* UIView.swift */; };
 		E057D3252DF4465C004FF46B /* PokedexCollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E057D3242DF4465C004FF46B /* PokedexCollectionModel.swift */; };
 		E057D3272DF501E4004FF46B /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = E057D3262DF501E4004FF46B /* Service.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E05720F22E5B30B2005013DB /* PokemonInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonInfoController.swift; sourceTree = "<group>"; };
 		E057D3222DF30C99004FF46B /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		E057D3242DF4465C004FF46B /* PokedexCollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexCollectionModel.swift; sourceTree = "<group>"; };
 		E057D3262DF501E4004FF46B /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				E0A227552DF121DF0052C5D0 /* PokedexCollectionViewController.swift */,
+				E05720F22E5B30B2005013DB /* PokemonInfoController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0A227562DF121DF0052C5D0 /* PokedexCollectionViewController.swift in Sources */,
+				E05720F32E5B30B2005013DB /* PokemonInfoController.swift in Sources */,
 				E057D3272DF501E4004FF46B /* Service.swift in Sources */,
 				E0A2278B2DF141800052C5D0 /* UIColor.swift in Sources */,
 				E064BF3B2E004A750091602D /* PokedexInfoView.swift in Sources */,

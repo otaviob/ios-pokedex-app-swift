@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  PokedexCollectionViewController.swift
 //  ios-pokedex-app-swift
 //
 //  Created by Otavio Brito on 5/6/2025.
@@ -14,6 +14,8 @@ class PokedexCollectionViewController: UICollectionViewController {
     // MARK: - Properties
     
     var pokedexCollection = [PokedexCollectionModel]()
+    var filteredPokedex = [PokedexCollectionModel]()
+    var inSearchMode = false
     var searchBar: UISearchBar!
     
     let infoView: PokedexInfoView = {
@@ -39,8 +41,8 @@ class PokedexCollectionViewController: UICollectionViewController {
     // MARK: - Selectors
     
     @objc func showSearchBar() {
-        print("work")
-    }   
+        configureSerchBar()
+    }
     
     @objc func handleDismissal() {
         print("work")
@@ -58,8 +60,11 @@ class PokedexCollectionViewController: UICollectionViewController {
         }
     }
     
+    // MARK: - Helper Functions
+    
     func configureSerchBar() {
-          searchBar = UISearchBar()
+        searchBar = UISearchBar()
+        searchBar.delegate = self
         searchBar.sizeToFit()
         searchBar.showsCancelButton = true
         searchBar.becomeFirstResponder()
@@ -69,7 +74,10 @@ class PokedexCollectionViewController: UICollectionViewController {
         navigationItem.titleView = searchBar
     }
     
-    // MARK: - Helper Functions
+    func configueSearchBarButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(showSearchBar))
+        navigationItem.rightBarButtonItem?.tintColor = .white
+    }
     
     func dismissInfoView(pokedex: PokedexCollectionModel?) {
         UIView.animate(withDuration: 0.5, animations: {
@@ -94,7 +102,8 @@ class PokedexCollectionViewController: UICollectionViewController {
         navigationController?.navigationBar.isTranslucent = false
         
         navigationItem.title = "Pokedex"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(showSearchBar))
+        
+        configueSearchBarButton()
         
         collectionView.register(PokedexCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
@@ -104,20 +113,47 @@ class PokedexCollectionViewController: UICollectionViewController {
         
         let gesture = UITapGestureRecognizer(target: self, action: #selector(handleDismissal))
         visualEffectView.addGestureRecognizer(gesture)
-        
     }
 }
+
+// MARK: - SearchBar
+
+extension PokedexCollectionViewController: UISearchBarDelegate {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        navigationItem.titleView = nil
+        configueSearchBarButton()
+        inSearchMode = false
+        collectionView.reloadData()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        if searchText == "" || searchBar.text == nil {
+            inSearchMode = false
+            collectionView.reloadData()
+            view.endEditing(true)
+        } else {
+            inSearchMode = true
+            filteredPokedex = pokedexCollection.filter({ $0 .name?.range(of: searchText.lowercased(), options: .caseInsensitive) != nil})
+            
+            collectionView.reloadData()
+            }
+        }
+    }
+    
+
 
     // MARK: - UICollectionView DataSource
 
 extension PokedexCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return pokedexCollection.count
+        return inSearchMode ? filteredPokedex.count : pokedexCollection.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PokedexCollectionViewCell
-        cell.pokedexCollection = pokedexCollection[indexPath.item]
+        
+        cell.pokedexCollection = inSearchMode ? filteredPokedex[indexPath.row] : pokedexCollection[indexPath.row]
         cell.delegate = self
         return cell
     }

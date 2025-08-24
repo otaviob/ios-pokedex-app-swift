@@ -28,7 +28,7 @@ class PokedexInfoView: UIView {
             guard let weight = pokedex.weight else { return }
             
             imageView.image = pokedex.image
-            nameLabel.text = pokedex.name
+            nameLabel.text = pokedex.name?.capitalized
             
             configureLabel(label: typeLabel, title: "Type", details: type)
             configureLabel(label: defenseLabel, title: "Defense", details: "\(defense)")
