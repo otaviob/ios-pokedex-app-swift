@@ -7,12 +7,30 @@
 
 import UIKit
 
-class PokedexInfoController: UIViewController {
+class PokedexInfoViewController: UIViewController {
     
     // MARK: - Properties
     
+    var pokedex: PokedexCollectionModel? {
+        didSet {
+            navigationItem.title = pokedex?.name?.capitalized
+            imageView.image = pokedex?.image
+            infoLabel.text = pokedex?.description
+        }
+    }
     
+    let imageView: UIImageView = {
+        let iv = UIImageView()
+        iv.contentMode = .scaleAspectFit
+        return iv
+    }()
     
+    let infoLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.numberOfLines = 0
+        return label
+    }()
     
     
     // MARK: - Init
@@ -25,5 +43,13 @@ class PokedexInfoController: UIViewController {
     // MARK: - Helper Functions
     func configureViewComponents() {
         view.backgroundColor = .white
+        navigationController?.navigationBar.tintColor = .white
+        
+        view.addSubview(imageView)
+        imageView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: nil, paddingTop: 44, paddingLeft: 12, paddingBottom: 0, paddingRight: 0, width: 100, height: 100)
+        
+        view.addSubview(infoLabel)
+        infoLabel.anchor(top: nil, left: imageView.rightAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 44, paddingLeft: 16, paddingBottom: 0, paddingRight: 4, width: 0, height: 0)
+        infoLabel.centerYAnchor.constraint(equalTo: imageView.centerYAnchor).isActive = true
     }
 }

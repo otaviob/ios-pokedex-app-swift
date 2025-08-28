@@ -143,7 +143,7 @@ extension PokedexCollectionViewController: UISearchBarDelegate {
     
 
 
-    // MARK: - UICollectionView DataSource
+    // MARK: - UICollectionViewDataSource/Delegate
 
 extension PokedexCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -157,9 +157,18 @@ extension PokedexCollectionViewController {
         cell.delegate = self
         return cell
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let controller = PokedexInfoViewController()
+        controller.pokedex = inSearchMode ? filteredPokedex[indexPath.row] : pokedexCollection[indexPath.row]
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    
 }
 
-    // MARK: - UICollectionView Delegate
+    // MARK: - UICollectionViewDelegateFlowLayout
 
 extension PokedexCollectionViewController: UICollectionViewDelegateFlowLayout {
     
