@@ -32,6 +32,12 @@ class PokedexInfoViewController: UIViewController {
         return label
     }()
     
+    let infoView: PokedexInfoView = {
+        let view = PokedexInfoView()
+        view.configureViewInfoController()
+        return view
+    }()
+    
     
     // MARK: - Init
     
@@ -51,5 +57,8 @@ class PokedexInfoViewController: UIViewController {
         view.addSubview(infoLabel)
         infoLabel.anchor(top: nil, left: imageView.rightAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 44, paddingLeft: 16, paddingBottom: 0, paddingRight: 4, width: 0, height: 0)
         infoLabel.centerYAnchor.constraint(equalTo: imageView.centerYAnchor).isActive = true
+        
+        view.addSubview(infoView)
+        infoView.anchor(top: infoLabel.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 8, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 150)
     }
 }

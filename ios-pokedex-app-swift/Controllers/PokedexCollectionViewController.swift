@@ -190,6 +190,7 @@ extension PokedexCollectionViewController: PokedexCollectionViewCellDelegate {
     func presentPokedexInfoView(withPokedex pokedex: PokedexCollectionModel) {
         
         view.addSubview(infoView)
+        infoView.configureUIComponents()
         infoView.delegate = self
         infoView.pokedex = pokedex
         infoView.anchor(top: nil, left: nil, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.frame.width - 64, height: 350)
