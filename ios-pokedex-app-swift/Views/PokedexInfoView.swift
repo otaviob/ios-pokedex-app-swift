@@ -115,11 +115,6 @@ class PokedexInfoView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        if configureInfoController {
-            
-        } else {
-            
-        }
     }
     
     required init?(coder aDecoder: NSCoder) {
