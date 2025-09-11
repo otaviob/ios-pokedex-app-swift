@@ -62,13 +62,11 @@ class PokedexCollectionViewController: UICollectionViewController {
     
     // MARK: - Helper Functions
     
-    
     //// Button
     
     func configureSerchBar(shouldShow: Bool) {
         
         if shouldShow {
-            
             searchBar = UISearchBar()
             searchBar.delegate = self
             searchBar.sizeToFit()
@@ -90,7 +88,6 @@ class PokedexCollectionViewController: UICollectionViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(showSearchBar))
         navigationItem.rightBarButtonItem?.tintColor = .white
     }
-    
     
     ///
     
@@ -116,7 +113,8 @@ class PokedexCollectionViewController: UICollectionViewController {
     }
     
     func configureUIComponents() {
-        // [Style] - Navigation bar
+        
+        /// [Style] - Navigation bar
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = .mainColor()
@@ -164,9 +162,7 @@ extension PokedexCollectionViewController: UISearchBarDelegate {
             }
         }
     }
-    
-
-
+        
     // MARK: - UICollectionViewDataSource/Delegate
 
 extension PokedexCollectionViewController {
@@ -185,10 +181,21 @@ extension PokedexCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let pokedexPush = inSearchMode ? filteredPokedex[indexPath.row] : pokedexCollection[indexPath.row]
+        
+        var pokedexEvoArray = [PokedexCollectionModel]()
+        
+        guard let evoChain = pokedexPush.evolutionChain else { return }
+        let evolutionChain = EvolutionChain(evolutionArray: evoChain)
+        let evoIds = evolutionChain.evolutionIds
+        
+        evoIds.forEach { (id) in
+            pokedexEvoArray.append(pokedexCollection[id - 1])
+        }
+        pokedexPush.evoArray = pokedexEvoArray
+    
+        
         showPokemonInfoController(withPokedex: pokedexPush)
     }
-    
-    
 }
 
     // MARK: - UICollectionViewDelegateFlowLayout

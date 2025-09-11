@@ -17,6 +17,15 @@ class PokedexInfoViewController: UIViewController {
             imageView.image = pokedex?.image
             infoLabel.text = pokedex?.description
             infoView.pokedex = pokedex
+            
+            if let evoArray = pokedex?.evoArray {
+                if evoArray.count > 1 {
+                    firstEvoImageView.image = evoArray[0].image
+                    secondEvoImageView.image = evoArray[1].image
+                } else {
+                    firstEvoImageView.image = evoArray[0].image
+                }
+            }
         }
     }
     
@@ -62,14 +71,12 @@ class PokedexInfoViewController: UIViewController {
     let firstEvoImageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFit
-        iv.backgroundColor = .gray
         return iv
     }()
     
     let secondEvoImageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFit
-        iv.backgroundColor = .gray
         return iv
     }()
     
